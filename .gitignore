@@ -1,1 +1,4 @@
 .DS_Store
+*error.log
+dist/
+node_modules/

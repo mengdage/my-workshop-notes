@@ -1,0 +1,21 @@
+{
+  "name": "api-node-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start:server": "rm -rf ./build && webpack --mode development"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "express": "^4.16.3",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "start-server-webpack-plugin": "^2.2.5",
+    "webpack": "^4.8.1",
+    "webpack-cli": "^2.1.3"
+  }
+}
