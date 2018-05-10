@@ -10,7 +10,7 @@ server.listen(3000, () => {
 
 if (module.hot) {
   module.hot.accept('./server.js', () => {
-    server.removeListener('request', currentServer)
+    server.removeListener('request', currentApp)
     server.once('request', app)
     currentApp = app
   })

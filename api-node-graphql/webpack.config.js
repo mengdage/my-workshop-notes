@@ -31,7 +31,8 @@ module.exports = {
   },
   plugins: [
     new StartServerWebpackPlugin({
-      name: 'server.js'
+      name: 'server.js',
+      nodeArgs: ['--inspect', '--inspect-brk']
     }),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
