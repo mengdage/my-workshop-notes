@@ -44,3 +44,40 @@ dogSchema.pre('validation', () => {})
 export const dog = mongoose.model('dog', dogSchema)
 
 ```
+
+## CRUD in controllers
+
+- Create controllers for each http verbs + route configuration.
+
+- Use information from request and middleware to provide details to DB queries and inserts.
+
+  - Query params
+  - Route params
+  - Tokens
+  - Cookies
+  - IP's
+
+- Keep it async
+- Try to minimize touching the DB.
+
+```javascript
+// Model level
+
+// retrieve
+const song = await Song.findById(id).exec()
+
+Song.findOne({name: 'thisname'}).exec()
+// create
+// 1
+const song = new Song({})
+song.save()
+// 2
+Song.create({})
+
+// update
+Song.findOneAndUpdate({name: 'thisname'}, {name: 'othername'}, {new: true})
+
+// document level
+song.name = 'anothername'
+const newSong = await song.save() // .remove(); .populate(); ...
+```
