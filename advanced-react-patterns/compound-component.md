@@ -1,6 +1,6 @@
 # Compound Component
 
-- When you have several components that need to share the same state, but the users needn't know about it, use compound component.
+When you have several components that need to share the same state, but the users needn't know about it, use compound component.
 
 ```html
 <select>
@@ -10,7 +10,12 @@
 </select>
 ```
 
-The parent holds the state and shares it with its children.
+The parent holds the state and shares it with its children. It's an easy way to customize the component.
+
+There are two kinds of compound components:
+
+- [Basic compound component](#basic_compound_component)
+- [Flexible compound component](#flexible_compound_component)
 
 ## Basic Compound Component
 
