@@ -1,4 +1,4 @@
 # Rendux
 
-redux as a `render props`
+Create a redux as a `render props`.
 
