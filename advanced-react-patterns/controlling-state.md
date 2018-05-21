@@ -133,3 +133,38 @@ toggleStateReducer = (state, changes) => {
   )}
 </Toggle>
 ```
+## Control props
+
+Let the user control the values of state just like controlled inputs. You can update the state of the component from outside, completely uncontrolled by the component.
+
+```javascript
+class Toggle extends Component {
+  state = {on: false}
+
+  // The `isControlled` method tests if the prop is given from the user.
+  isControlled = (prop) => {
+    return this.props[prop] !== undefined // or use isNil to check null as well
+  }
+
+  // The `getState` method comnbine the state props from the `state` and `props`.
+  getState = (state = this.state) => {
+    return Object.entries(state).reduce(
+      (combinedState, [key, value]) => {
+        if (this.isControlled(key)) {
+          combinedState[key] = this.props[key]
+        } else {
+          combinedState[key] = value
+        }
+
+        return combinedState
+      }, {})
+  }
+  // From now on, replace `this.state` with `this.getState` to get the correct state.
+
+  ...
+}
+```
+
+- You can also use `componentWillReceiveProps` to synchronize the state and props. However, now there are two sources of truth and it is hard to maintain. BTW, the `componentWillReceiveProps` is depricated.
+- By using render props, we only have a single source of truth.
+
