@@ -2,6 +2,8 @@
 
 - [State Initializer](#state_initializer)
 - [State Reducer](#state_reducer)
+- [State Reducer with Change Types](#state_reducer_with_change_types)
+- [Conrol Props](#control_props)
 
 ## State Initializer
 
