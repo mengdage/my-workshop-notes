@@ -116,3 +116,5 @@ class Toggle extends React.Component {
 ## Extra Readings
 
 1. [common questions about render props](https://blog.kentcdodds.com/answers-to-common-questions-about-render-props-a9f84bb12d5d)
+
+2. [Use a Render Prop!](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
