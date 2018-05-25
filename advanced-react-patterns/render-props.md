@@ -1,5 +1,7 @@
 # Render Props
 
+A render prop is a function prop that a component uses to know what to render.
+
 The component can focus on managing states. It provides an interface for the user to render what they want by using these states.
 
 ```javascript

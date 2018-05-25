@@ -50,3 +50,34 @@ Problems in this piece of code:
 - No code to remove the event handler. By clicking a button, extra handlers are attached to the button and it slows down the system.
   - When doing synchronous things, `try...catch` does all that for us. But in asynchronous programming, we are on our own.
 
+
+## Small JS Tutorial
+
+- Use `forEach` instead of loops.
+- Never change the array (`map`).
+- Filter the array with `filter`.
+- Create the `concatAll`. (no recursion)
+
+```javascript
+var getTopRatedFiles = user => 
+  user.videoLists
+    .map(videoList => videoList.videos
+      .filter(video => video.rating === 5.0)
+    ).concatAll();
+
+getTopRateFiles(users)
+  .forEach()
+```
+
+```javascript
+// building
+var getElementDrags = elmt =>
+  elmt.mouseDowns.
+    map(mouseDown => document.mouseMoves.
+      takeUntil(document.mouseUps)
+    ).concatAll()
+
+// consuming
+getElementDrags(image)
+  .forEach(pos => image.position = pos)
+```
