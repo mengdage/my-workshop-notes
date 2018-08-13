@@ -28,7 +28,21 @@
 ```javascript
 test('title', () => {
   // arrange
+  const container = document.createElement('div')
+  ReactDOM.render(<ItemList items={[]} />, container)
+
   // act
+  // manipulate something
+
   // assert
+  expect(container.textContent).toMatch('no items')
 })
 ```
+
+### Q&A
+
+Testing styles
+
+- Using a CSS and JS library to for styling can help to test the style in JS.
+- It's better to use a visual regression tool to test appearances.
+- Use snapchat to test DOM structures.

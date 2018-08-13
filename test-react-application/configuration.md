@@ -1,8 +1,9 @@
 # configuration
 
-Babel should be configured to transpile everything expect `import` when using babel and webpack. It's because webpack support tree shacking by using `import`.
+Babel should be configured to transpile everything expect `import` when using babel and webpack. It's because webpack supports ES Module and can do tree shacking by using `import`.
 
 ```javascript
+// By default, Jest will set NODE_ENV to 'test'
 // .babelrc.js
 const isTest = process.env.NODE_ENV === 'test'
 
@@ -24,6 +25,11 @@ module.exports = {
   "babel": {
     "presets": "./.babelrc.js"
   }
+}
+// now we can use commonjs to create babelrc
+// .babelrc.js
+module.exports = {
+  ...
 }
 
 // OR
@@ -47,7 +53,7 @@ Jest load JSDOM by default.
 {
   ...,
   "jest": {
-    "testEnvironment": "jest-environment-node" // or "node", "jsdom"
+    "testEnvironment": "jest-environment-node" // default, or "node", "jsdom"
   }
 }
 ```
@@ -69,6 +75,19 @@ NodeJS does not recognize css files.
 ### CSS Modules
 
 Right now NodeJS doesnot support ES modules or dynamic imports. You can use `require` to load module synchronous when needed. Babel has a plugin to transform dynamic import to a `require` and return a promise.
+
+```javascript
+'babel-plugin-dynamic-import-node'
+
+// .babelrc.js
+{
+  plugins: [
+    'syntax-dynamic-import',
+    ...
+    isTest ? 'dynamic-import-node' : null
+  ].filter(Boolean)
+}
+```
 
 ### Test Coverage
 
