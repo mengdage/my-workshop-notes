@@ -1,6 +1,6 @@
 # Unit Test
 
-FIRST properties of good unit tests:
+**FIRST** properties of good unit tests:
 
 Fast, Isolated, Repeatable, Self-verifying, Timely
 
@@ -86,7 +86,7 @@ Snapshot tests do not communicate the intention of the original test developer. 
 
 Snapshot tests are more useful with a healthy code review process, such as using a dedicated code review tool like Github. Snapshot tests require large amount of human resource to confirm the udpates.
 
-## Different testing strategies
+# Different testing strategies
 
 assert props/states < shallow snapshot < assert DOM < mount snapshot
 
@@ -102,11 +102,19 @@ expect(wrapper.props('lists')).toEqual(['item1', 'item2', 'item3'])
 expect(shallow(<ItemLists {...propsMock} />)).toMatchSnapshot()
 ```
 
-- assert DOM: `expect(wrapper.find('li.list-item').length).toBe(3)`
+- assert DOM: 
 
-- mount snapshot: `expect(mount(<ItemLists {...propsMock} />)).toMatchSnapshot()`
+```javascript
+expect(wrapper.find('li.list-item').length).toBe(3)
+```
 
-# Testing basic component rendering (dumb components)
+- mount snapshot:
+
+```
+expect(mount(<ItemLists {...propsMock} />)).toMatchSnapshot()
+```
+
+## Testing basic component rendering (dumb components)
 
 ```javascript
 test('render a label', () => {

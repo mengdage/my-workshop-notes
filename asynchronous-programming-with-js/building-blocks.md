@@ -66,18 +66,73 @@ var getTopRatedFiles = user =>
     ).concatAll();
 
 getTopRateFiles(users)
-  .forEach()
+  .forEach(film => console.log(file))
 ```
 
 ```javascript
-// building
+// building the collection you want
 var getElementDrags = elmt =>
   elmt.mouseDowns.
     map(mouseDown => document.mouseMoves.
       takeUntil(document.mouseUps)
     ).concatAll()
 
-// consuming
+// consuming the data in that collection and dong something with it
 getElementDrags(image)
   .forEach(pos => image.position = pos)
 ```
+
+## Iterators Pattern and Observors Pattern
+
+Events and arrays are both collections.
+
+### Iterators
+
+```javascript
+const collection = ... // array, map, set, etc
+const iterator = collection[Symbol.iterator]()
+iterator.next() 
+// > { value: ..., done: false }
+iterator.next() 
+// > { value: ..., done: false }
+iterator.next() 
+// > { value: ..., done: false }
+iterator.next() 
+// > { done: true }
+```
+
+With `iterator`, the consumer doesn't need to know the internal structure of a collection to pull out the data and consume it. 
+
+### Observors
+
+```javascript
+document.addEventListener(
+  'mousemove',
+  function handler (e) {}
+)
+
+// > { clientX: .., clientY: ..}
+// > { clientX: .., clientY: ..}
+// > { clientX: .., clientY: ..}
+// > { clientX: .., clientY: ..}
+// > { clientX: .., clientY: ..}
+// > { clientX: .., clientY: ..}
+```
+
+With `observor`, the consumer hands a callback function to the producer and the producer push information to the consumer throught the callback.
+
+
+The two patterns are actually very similar. They're about a producer giving a consumer things one at a time. The only difference is who's in control.
+
+Another difference is how the producers tell the consumers `errors` or `completion`.
+
+- With `iterator`, the iterator returns `{ done: true }`.
+- But with `observor`, there's no way yet.
+
+### Relationships
+
+> The designer of patterns made a mistake.
+
+There actually exists some relationship between the two patterns. 
+
+`Iterators <-------Progressively send information to a consumer--------> Observors`
