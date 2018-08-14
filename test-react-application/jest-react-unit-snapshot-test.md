@@ -2,13 +2,15 @@
 
 **FIRST** properties of good unit tests:
 
-Fast, Isolated, Repeatable, Self-verifying, Timely
+Fast, Isolated, Repeatable, Self-verifying, Timely.
 
 ## Fast
 
+The slower the tests, the less often we'll run them. And there'll be more changes between test runs, which makes it harder to find problems when tests fail.
+
 ## Isolated
 
-One assert per test. 
+Each test should be independent of all other tests. It should set up what it needs, run the test, and verify the results. One assert per test. 
 
 ### AAA (Arrange Act Assert) notation
 
@@ -18,11 +20,15 @@ A test should be divided into three parts:
 - Act
 - Assert
 
-Maybe there will be a `Restore` step.
+Maybe there will be a `Restore` step at the end.
 
 ## Repeatable
 
+Every test should either pass all the time, or fail all the time. Mock up external dependencies to avoid intermittently-failing tests.
+
 ## Self-verifying
+
+Tests should verify their results automatically. Avoid involving human.
 
 ## Timely
 
@@ -42,18 +48,18 @@ Before, we need many dependencies to run a single react test.
 
 Jest provides all you need for unit testing.
 
-## Jest
+# Jest
 
 Benefit:
 
+- Performance: run test in parallel.
+- Watch mode: make your experience of writing tests easier.
 - Zero configuration: js dom, test runner, mocking library, test coverage library, assertion library.
 - Less dependencies: a one-stop-shop for js unit testing.
-- Performance: run test in parallel.
 - Greate itegration with Babel: `jest-babel` plugin.
 - Snapshot testing.
-- Watch mode.
 
-# Snapshot testing
+## Snapshot testing
 
 > Snapshot testing is a complement for conventional tests, not a replacement.
 
@@ -61,7 +67,7 @@ Classic assertion based tests are for testing clearly defined behavior that is e
 
 Snapshot tests are for less defined behavior that may change often.
 
-## History
+### History
 
 Also known as `Gold Master Testing`. Gold master testing refers to capturing the result of a process, and then comparing future runs against the saved “gold master” (or known good) version to discover unexpected changes.
 
@@ -74,19 +80,27 @@ Procee of `Gold Master Testing`:
 3. When testing an update, run the same input through the new verison of the system and flag any variations.
 4. For each variation, have a human determine whether or not the change is expected and desirable. If so, update the pesisted gold master.
 
-## Pros
+### Usage
+
+- Test React components
+- Test Redux reducers
+- Test API endpoints
+
+### Pros
 
 Snapshot tests is perfect for things that in past would have raised concerns for "overly brittle" tests that catch any regression but require constant updates, such as UI testing.
 
 Snapshots in Jest are easy to write and effortless to update. And they provide a clear view of what has changed after each update. When testing a complex component, instead of picking critial parts, you can just capture a snapshot and any following update would procues updated snapshots to be compared with the previous one.
 
-## Corns
+### Corns
 
 Snapshot tests do not communicate the intention of the original test developer. They only provide the results without the processes. So they are not suitable for complicate logics. (???? In my opinion, snapshots could be the output of some complicate logic.)
 
-Snapshot tests are more useful with a healthy code review process, such as using a dedicated code review tool like Github. Snapshot tests require large amount of human resource to confirm the udpates.
+Snapshot tests are more useful with a *healthy code review process*, such as using a dedicated code review tool like Github. Snapshot tests require large amount of human resource to confirm the udpates.
 
 # Different testing strategies
+
+Levels of strictness:
 
 assert props/states < shallow snapshot < assert DOM < mount snapshot
 
@@ -147,7 +161,7 @@ test('render a popover with a random ID', () => {
 });
 ```
 
-### Testing events
+## Testing events
 
 Simulate an event like click or change and then compare components to snapshots (shallow):
 
@@ -202,9 +216,6 @@ test('pass a selected value to the onChange handler', () => {
 });
 ```
 
-##
-
-
 # Video
 
 snapshot testing is very fast with Jest watch mode.
@@ -220,5 +231,7 @@ snapshot testing is very fast with Jest watch mode.
 - [Unit Tests Are FIRST](https://pragprog.com/magazines/2012-01/unit-tests-are-first)
 
 - [Getting Testy: Anti-Patterns](http://randycoulman.com/blog/2015/07/21/getting-testy-anti-patterns/)
+
+- [Testing React components with Jest and Enzyme](https://hackernoon.com/testing-react-components-with-jest-and-enzyme-41d592c174f)
 
 - [Testing React Applications](https://www.youtube.com/watch?v=59Ndb3YkLKA)
