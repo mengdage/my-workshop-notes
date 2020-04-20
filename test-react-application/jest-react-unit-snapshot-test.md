@@ -216,6 +216,15 @@ test('pass a selected value to the onChange handler', () => {
 });
 ```
 
+# Best Practice
+
+1. Use detailed description to specify the intention of the snapshot.
+
+Unlike assert based tests which shows clearly what is critical to test, snapshots does not communicate well the original developer's intention of the test. Use description to specify the most important thing under test.
+
+2. 
+
+
 # Video
 
 snapshot testing is very fast with Jest watch mode.

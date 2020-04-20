@@ -1,3 +1,7 @@
+The real source of complexity of large asychronous programming is using states to track asynchronous programs.
+
+You cannot repeat (loop) an asynchronous functions. So you cannot use for loop or while loop in asynchronous programming.
+
 # Building Blocks
 
 How to solve BIG async problems by thinking differently about `Events`. It make the hard asynchronous programming problem a little bit easier.
